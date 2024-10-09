@@ -1,0 +1,193 @@
+Airline,Flight Number,Source,Destination
+United Airlines,UA74646,Seoul,Zurich
+Japan Airlines,JA51833,Seoul,San Francisco
+Air France,AF19473,Sydney,Tokyo
+Cathay Pacific,CX37324,Dubai,Doha
+ANA (All Nippon Airways),NH26973,San Francisco,Los Angeles
+Virgin Atlantic,VS28487,Dubai,Madrid
+EVA Air,BR75148,Melbourne,Madrid
+American Airlines,AA26317,Madrid,Tokyo
+Etihad Airways,EY44270,Toronto,Los Angeles
+Swiss International Air Lines,LX56276,Toronto,Paris
+Emirates,EK84932,Paris,Zurich
+British Airways,BA49276,Los Angeles,London
+Qatar Airways,QR67253,Madrid,Dubai
+Turkish Airlines,TK83762,Zurich,San Francisco
+Lufthansa,LH29541,Tokyo,Sydney
+Singapore Airlines,SQ92763,Seoul,Melbourne
+Air Canada,AC14328,Toronto,Tokyo
+Qantas,QF38472,Los Angeles,Sydney
+Delta Air Lines,DL65214,San Francisco,Seoul
+KLM Royal Dutch Airlines,KL12839,London,Paris
+American Airlines,AA98234,New York,Sydney
+Air France,AF67891,London,Los Angeles
+Japan Airlines,JA34572,Tokyo,Paris
+Emirates,EK90731,Dubai,Toronto
+British Airways,BA52341,Zurich,New York
+Qatar Airways,QR48723,Sydney,Madrid
+Turkish Airlines,TK98412,San Francisco,Zurich
+Lufthansa,LH23987,Melbourne,Tokyo
+Singapore Airlines,SQ43219,Seoul,Toronto
+Air Canada,AC14976,New York,Paris
+Delta Airlines,DL62743,Madrid,Tokyo
+United Airlines,UA87123,Sydney,New York
+Swiss International Airlines,LX19273,London,Zurich
+Cathay Pacific,CX38457,Hong Kong,Paris
+Qantas,QF12584,Sydney,Los Angeles
+Korean Air,OZ92457,Seoul,San Francisco
+KLM Royal Dutch Airlines,KL78234,Amsterdam,Dubai
+China Southern Airlines,CZ19382,Beijing,Toronto
+Aeroflot,SU89124,Moscow,Sydney
+Scandinavian Airlines,SK28734,Stockholm,New York
+Turkish Airlines,TK48329,Istanbul,Singapore
+British Airways,BA67382,London,New York
+Lufthansa,LH58320,Munich,Beijing
+Air France,AF48201,Paris,Tokyo
+American Airlines,AA37294,Chicago,Berlin
+Emirates,EK91827,Dubai,Johannesburg
+Qatar Airways,QR82743,Doha,New York
+Singapore Airlines,SQ29482,Singapore,Los Angeles
+Japan Airlines,JA38204,Tokyo,Frankfurt
+Malaysia Airlines,MA64829,Kuala Lumpur,Sydney
+Turkish Airlines,TK48329,Istanbul,Singapore
+British Airways,BA67382,London,New York
+Lufthansa,LH58320,Munich,Beijing
+Air France,AF48201,Paris,Tokyo
+American Airlines,AA37294,Chicago,Berlin
+Emirates,EK91827,Dubai,Johannesburg
+Qatar Airways,QR82743,Doha,New York
+Singapore Airlines,SQ29482,Singapore,Los Angeles
+Japan Airlines,JA38204,Tokyo,Frankfurt
+Malaysia Airlines,MA64829,Kuala Lumpur,Sydney
+Cathay Pacific,CX18273,Hong Kong,Paris
+Qantas,QF47238,Sydney,Los Angeles
+Delta Airlines,DL38472,New York,London
+United Airlines,UA28394,Chicago,Tokyo
+Air India,AI19834,Delhi,Sydney
+ANA (All Nippon Airways),NH84721,Tokyo,Beijing
+Swiss International Air Lines,LX82743,Zurich,Singapore
+KLM Royal Dutch Airlines,KL28394,Amsterdam,Hong Kong
+Aeroflot,SU93847,Moscow,Berlin
+Thai Airways,TG28347,Bangkok,Sydney
+Turkish Airlines,TK37482,Istanbul,Frankfurt
+British Airways,BA82347,London,Los Angeles
+Lufthansa,LH29483,Munich,Paris
+Air France,AF48230,Paris,Chicago
+American Airlines,AA38472,New York,Johannesburg
+Emirates,EK92837,Dubai,Tokyo
+Qatar Airways,QR28374,Doha,Singapore
+Singapore Airlines,SQ48293,Singapore,London
+Japan Airlines,JA19823,Tokyo,Sydney
+Malaysia Airlines,MA82734,Kuala Lumpur,Frankfurt
+Cathay Pacific,CX38472,Hong Kong,Los Angeles
+Qantas,QF47283,Sydney,New York
+Delta Airlines,DL28347,Chicago,Berlin
+United Airlines,UA39483,New York,Paris
+Air India,AI92734,Delhi,Tokyo
+ANA (All Nippon Airways),NH82743,Tokyo,Sydney
+Swiss International Air Lines,LX73829,Zurich,Hong Kong
+KLM Royal Dutch Airlines,KL48293,Amsterdam,Sydney
+Aeroflot,SU92384,Moscow,Singapore
+Thai Airways,TG19384,Bangkok,London
+Turkish Airlines,TK84723,Istanbul,New York
+British Airways,BA47283,London,Sydney
+Lufthansa,LH92837,Munich,Johannesburg
+Air France,AF73829,Paris,Singapore
+American Airlines,AA19283,Chicago,Tokyo
+Emirates,EK84723,Dubai,Frankfurt
+Qatar Airways,QR29384,Doha,Sydney
+Singapore Airlines,SQ29384,Singapore,Paris
+Japan Airlines,JA27384,Tokyo,Berlin
+Malaysia Airlines,MA93847,Kuala Lumpur,New York
+Cathay Pacific,CX74829,Hong Kong,Sydney
+Qantas,QF74829,Sydney,Frankfurt
+Delta Airlines,DL48293,New York,Singapore
+United Airlines,UA82934,Chicago,London
+Air India,AI73928,Delhi,Berlin
+ANA (All Nippon Airways),NH73892,Tokyo,Paris
+Swiss International Air Lines,LX19384,Zurich,Sydney
+KLM Royal Dutch Airlines,KL94728,Amsterdam,Los Angeles
+Aeroflot,SU73892,Moscow,Tokyo
+Thai Airways,TG93847,Bangkok,New York
+Turkish Airlines,TK84729,Istanbul,Berlin
+British Airways,BA92837,London,Singapore
+Lufthansa,LH29384,Munich,Sydney
+Air France,AF28374,Paris,Los Angeles
+American Airlines,AA84729,Chicago,Hong Kong
+Emirates,EK73829,Dubai,Berlin
+Qatar Airways,QR82743,Doha,Paris
+Singapore Airlines,SQ93847,Singapore,Sydney
+Japan Airlines,JA93874,Tokyo,New York
+Malaysia Airlines,MA74829,Kuala Lumpur,London
+Cathay Pacific,CX93847,Hong Kong,Chicago
+Qantas,QF82743,Sydney,Beijing
+Delta Airlines,DL28394,New York,Johannesburg
+United Airlines,UA29384,Chicago,Tokyo
+Air India,AI74829,Delhi,Sydney
+ANA (All Nippon Airways),NH82934,Tokyo,London
+Swiss International Air Lines,LX73829,Zurich,New York
+KLM Royal Dutch Airlines,KL82934,Amsterdam,Berlin
+Aeroflot,SU73892,Moscow,Sydney
+Thai Airways,TG29384,Bangkok,Paris
+Qatar Airways,QR13725,Doha,Dubai
+United Airlines,UA64218,San Francisco,New York
+Lufthansa,LH72198,Frankfurt,Toronto
+Singapore Airlines,SQ86243,Los Angeles,Hong Kong
+American Airlines,AA10234,Chicago,Dallas
+Emirates,EK12345,Dubai,Los Angeles
+British Airways,BA23456,London,Johannesburg
+Cathay Pacific,CX34567,Hong Kong,Bangkok
+Virgin Atlantic,VS45678,London,Orlando
+Japan Airlines,JA56789,Tokyo,Singapore
+Korean Air,OZ67890,Seoul,Beijing
+Air France,AF78901,Paris,Rome
+Delta Air Lines,DL89012,Atlanta,Miami
+Turkish Airlines,TK90123,Istanbul,Amsterdam
+Air Canada,AC45678,Toronto,Vancouver
+Qantas,QF56789,Sydney,Melbourne
+ANA (All Nippon Airways),NH67890,Tokyo,Los Angeles
+EVA Air,BR78901,Taipei,San Francisco
+Alitalia,AZ89012,Rome,New York
+Finnair,AY23456,Helsinki,Stockholm
+Icelandair,FI34567,Reykjavik,Toronto
+JetBlue Airways,B6 45678,New York,Boston
+Southwest Airlines,SWA78901,Dallas,Chicago
+Spirit Airlines,NK89012,Fort Lauderdale,Las Vegas
+Ryanair,FR23456,Dublin,London
+AirAsia,AK34567,Kuala Lumpur,Bangkok
+Virgin Australia,VA45678,Melbourne,Sydney
+Oman Air,WY56789,Muscat,Dubai
+TAP Air Portugal,TP67890,Lisbon,New York
+China Eastern Airlines,MU78901,Shanghai,Tokyo
+Aeromexico,AM89012,Mexico City,Los Angeles
+British Midland International,BD23456,Birmingham,Frankfurt
+Sun Country Airlines,MN34567,Minneapolis,Orlando
+Hainan Airlines,HU45678,Haikou,Los Angeles
+Azerbaijan Airlines,J256789,Baku,London
+Asiana Airlines,OZ67890,Seoul,Los Angeles
+Allegiant Air,G4 90123,Las Vegas,Los Angeles
+Frontier Airlines,F9 23456,Denver,Orlando
+Scoot Airlines,TR34567,Singapore,Tokyo
+Vueling Airlines,VY45678,Barcelona,Paris
+KLM Royal Dutch Airlines,KL56789,Amsterdam,Delhi
+Brussels Airlines,SN67890,Brussels,New York
+Air Transat,TS78901,Montreal,Cancun
+SAA (South African Airways),SA89012,Johannesburg,Sydney
+Flybe,BE23456,Exeter,Manchester
+WestJet,WS34567,Calgary,Toronto
+Spirit Airlines,NK45678,Orlando,Cancun
+Jetstar Airways,JQ56789,Melbourne,Auckland
+Lion Air,JT67890,Jakarta,Bali
+Peach Aviation,MM78901,Osaka,Tokyo
+Turkish Airlines,TK89012,Ankara,Dubai
+EasyJet,U2 23456,London,Berlin
+Transavia,HV34567,Amsterdam,Paris
+Ryanair,FR45678,Milan,Barcelona
+Scandinavian Airlines,SK56789,Oslo,Copenhagen
+Garuda Indonesia,GA67890,Jakarta,Bali
+China Southern Airlines,CZ78901,Guangzhou,Beijing
+Malaysia Airlines,MA89012,Kuala Lumpur,Melbourne
+SilkAir,MI23456,Singapore,Bali
+Air Madagascar,MD45678,Antananarivo,Paris
+Cambodia Angkor Air,K6 34567,Siem Reap,Bangkok
+Rwanda Air,WB 56789,Kigali,Johannesburg
