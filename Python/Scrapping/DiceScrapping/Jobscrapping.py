@@ -18,7 +18,7 @@ with open('gen_ai_job_list.csv', mode='w', newline='', encoding='utf-8') as file
     writer = csv.writer(file)
     
     # Write the header row
-    writer.writerow(['Job Title', 'Company', 'Location', 'Required Skills', 'Kind of Job', 'Posted On'])
+    writer.writerow(['Job Title', 'Company', 'Location', 'Kind of Job', 'Posted On', 'Job Description'])
 
     def scrape_page():
         job_cards = driver.find_elements(By.CLASS_NAME, 'card')  # Check if 'card' is the correct class name
@@ -29,24 +29,24 @@ with open('gen_ai_job_list.csv', mode='w', newline='', encoding='utf-8') as file
                 title = card.find_element(By.CLASS_NAME, 'card-title-link').text.strip()
             except:
                 title = 'Not available'
-            
-            try:
-                company = card.find_element(By.CSS_SELECTOR, '.card-company span').text.strip()
-            except:
-                company = 'Not available'
 
             try:
-                location = card.find_element(By.CSS_SELECTOR, '.card-location span').text.strip()
+                company = card.find_element(By.CSS_SELECTOR, 'a[data-cy="search-result-company-name"]').text.strip()
+            except:
+                company = 'Not available'
+            
+            try:
+                location = card.find_element(By.CSS_SELECTOR, '.card-company span').text.strip()
             except:
                 location = 'Not available'
 
             try:
-                job_type = card.find_element(By.CLASS_NAME, 'type').text.strip()
+                job_type = job_type = card.find_element(By.CSS_SELECTOR, 'span[data-cy="search-result-employment-type"]').text.strip()
             except:
                 job_type = 'Not specified'
 
             try:
-                posted_on = card.find_element(By.CLASS_NAME, 'posted').text.strip()
+                posted_on =  posted_on = card.find_element(By.CSS_SELECTOR, 'span[data-cy="card-posted-date"]').text.strip()
             except:
                 posted_on = 'Not available'
 
@@ -55,7 +55,7 @@ with open('gen_ai_job_list.csv', mode='w', newline='', encoding='utf-8') as file
             except:
                 description = 'Not available'
 
-            writer.writerow([title, company, location, description, job_type, posted_on])
+            writer.writerow([title, company, location,job_type, posted_on, description])
             print(f"Scraped: {title} at {company}, {location}")
 
     def scroll_to_element(element):
