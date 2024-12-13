@@ -14,7 +14,7 @@ def fetch_job_posting(url, llm):
         ### INSTRUCTION:
         The scraped text is from the careers page of a website.
         Your job is to extract the job posting and return them in JSON format containing the 
-        following keys: `role`, `company`, `experience`, `skills`, and `description`.
+        following keys: `role`, `company`, `experience`, `skills`, and `job description`.
         Only return the valid JSON.
         ### VALID JSON (NO PREAMBLE):    
         """
