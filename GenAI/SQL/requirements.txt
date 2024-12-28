@@ -1,0 +1,5 @@
+pymysql
+chromadb
+langchain 
+langchain-community 
+langchain-experimental
