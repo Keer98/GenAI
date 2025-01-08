@@ -8,6 +8,7 @@ from chromadb_manager import get_or_create_collection, add_to_collection, delete
 from config import DOCUMENTS_DIR
 import hashlib
 from generate_answer import generate_answer_with_llm
+from agents import generate_answer_with_agent1, validate_and_format_with_agent2
 
 
 def compute_hash(file_path):
@@ -107,8 +108,16 @@ def main():
             continue
         else: 
             related_chunks = query_collection(query)
-            answer=generate_answer_with_llm(query, related_chunks)
-            print(f"\nResponse:{answer['answer'].content}")   
+            #answer=generate_answer_with_llm(query, related_chunks)
+            #print(f"\nResponse:{answer['answer'].content}")  
+
+            # Step 1: Agent 1 generates the answer
+            answer = generate_answer_with_agent1(query, related_chunks)
+
+            # Step 2: Agent 2 validates and reformats the answer
+            formatted_answer = validate_and_format_with_agent2(answer)
+
+            print(f"\nResponse:{formatted_answer.content}") 
         
         # Update known files
         known_files = get_existing_files(DOCUMENTS_DIR)
