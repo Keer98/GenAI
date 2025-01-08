@@ -2,8 +2,12 @@
 import os
 
 def get_existing_files(directory):
-    """Return a set of files in the directory."""
-    return {file for file in os.listdir(directory) if os.path.isfile(os.path.join(directory, file))}
+    """Return a set of files in the directory, excluding temporary files."""
+    return {
+        file for file in os.listdir(directory) 
+        if os.path.isfile(os.path.join(directory, file)) 
+        and not file.startswith('~$')  # Ignore temporary Word files
+    }
 
 def detect_changes(directory, known_files):
     """Detect new and deleted files in the directory."""

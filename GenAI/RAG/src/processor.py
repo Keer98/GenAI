@@ -5,8 +5,8 @@ from docx import Document
 import PyPDF2
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-CHUNK_SIZE = 10000
-OVERLAP_SIZE = 1000
+CHUNK_SIZE = 5000
+OVERLAP_SIZE = 500
 
 def extract_text_from_pdf(file_path):
     with open(file_path, "rb") as file:
@@ -17,11 +17,22 @@ def extract_text_from_pdf(file_path):
         return text_by_page
 
 def extract_text_from_docx(file_path):
-    document = Document(file_path)
-    text_by_page = []
-    text = "\n".join(paragraph.text for paragraph in document.paragraphs)
-    text_by_page.append((1, text, os.path.basename(file_path)))  # Single page logic for DOCX
-    return text_by_page
+    """Extract text from a Word document."""
+    try:
+        # Skip temporary files
+        if os.path.basename(file_path).startswith('~$'):
+            return {}
+            
+        document = Document(file_path)
+        text_by_page = []
+        text = "\n".join(paragraph.text for paragraph in document.paragraphs)
+        text_by_page.append((1, text, os.path.basename(file_path)))  # Single page logic for DOCX
+        return text_by_page
+        
+
+    except Exception as e:
+        print(f"Error processing file {file_path}: {str(e)}")
+        return {}
 
 def compute_chunk_hash(chunk):
     """Compute a unique hash for a given chunk of text."""
