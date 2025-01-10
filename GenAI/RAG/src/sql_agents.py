@@ -3,10 +3,11 @@ from langchain_core.prompts import PromptTemplate
 from tavily import TavilyClient
 from langchain_experimental.sql import SQLDatabaseChain
 from sqlalchemy import text
-
+import os
 
 TAVILY_API_KEY="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"
 
+SQL_FILE_PATH = "cleaned_query.sql"
 
 llm = ChatGroq(
         model="llama-3.1-70b-versatile",
@@ -102,6 +103,7 @@ def route_agent(query, context):
     )
 
     return answer_res
+
 def extract_query_agent5(response):
     try:
         prompt_answer = PromptTemplate.from_template(
@@ -123,73 +125,129 @@ def extract_query_agent5(response):
     except Exception as e:
         print(f"Error in  extract_query_agent5: {e}")
 
-def fetch_data_from_database_agent4(query, related_chunks,db):
-    print("Agent4: Retriving the answer from the database")
+'''def fetch_data_from_database_agent4(query, related_chunks, db):
+    print("Agent4: Retrieving the answer from the database")
     try:
+        print("At Line 1")
         db_chain = SQLDatabaseChain.from_llm(llm, db, verbose=False)
+        print("At Line 2")
         response = db_chain.invoke(query)
+        print("At Line 3")
         if response:
             print(f"response: {response}")
         else:
             print("\nNo Response\n")
             return
-        query=extract_query_agent5(response)
+
+        query = extract_query_agent5(response)
         if query is None:
             print("Error: Extracted query is None")
             return None
-        query=query.content
+
+        query = query.content
         print(f"query: {query}")
-        cleaned_query = query.replace("```sql", "").replace("```", "").replace("SQL: ", "").replace("\n","").replace("[","").replace("]","").strip()
+        cleaned_query = query.replace("```sql", "").replace("```", "").replace("SQL: ", "").replace("\n", "").replace("[", "").replace("]", "").strip()
         print(f"cleaned query: {cleaned_query}")
-        return cleaned_query
+
+        # Save the cleaned query to a file
+        with open(SQL_FILE_PATH, "w") as file:
+            file.write(cleaned_query)
+
+        return SQL_FILE_PATH
     except Exception as e:
-        print(f"Error in  fetch_data_from_database_agent4: {e}")
+        print(f"Error in fetch_data_from_database_agent4: {e}")'''
+
+def fetch_data_from_database_agent4(query, related_chunks, db):
+    print("Agent4: Retrieving the answer from the database")
+    try:
+        print("At Line 1")
+        db_chain = SQLDatabaseChain.from_llm(llm, db, verbose=False)
+        print("At Line 2")
+        
+        # Debug input query
+        print(f"Input query: {query}")
+        print("Database schema:")
+        print(db.get_table_names())
+        for table in db.get_table_names():
+            print(f"Columns in {table}: {db.get_table_columns(table)}")
+
+        # Attempt to invoke db_chain
+        response = db_chain.invoke(query)
+        print("At Line 3")
+        
+        if response:
+            print(f"response: {response}")
+        else:
+            print("No response generated.")
+            return None
+
+        # Extract and clean the SQL query
+        query = extract_query_agent5(response)
+        if query is None:
+            print("Error: Extracted query is None")
+            return None
+
+        sql_query = query.content.strip()
+        print(f"Extracted SQL query: {sql_query}")
+
+        cleaned_query = sql_query.replace("```sql", "").replace("```", "").replace("\n", " ").strip()
+        print(f"Cleaned SQL query: {cleaned_query}")
+
+        # Save to a file
+        with open(SQL_FILE_PATH, "w") as file:
+            file.write(cleaned_query)
+
+        return SQL_FILE_PATH
+    except Exception as e:
+        print(f"Error in fetch_data_from_database_agent4: {e}")
+        return None
+
+
 def validate_sql_query(sql_query):
-    valid_keywords = valid_keywords = [
-    "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "ALTER", "DROP", "TRUNCATE", "RENAME",
-    "USE", "SHOW", "DESCRIBE", "DESC", "BEGIN", "COMMIT", "ROLLBACK", "SAVEPOINT",
-    "GRANT", "REVOKE", "EXPLAIN", "WITH", "DECLARE", "SET", "CALL", "EXEC", "EXECUTE",
-    "LOCK", "UNLOCK", "ANALYZE", "MERGE", "REPLACE", "UPSERT", "CONNECT", "DISCONNECT"
+    valid_keywords = [
+        "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "ALTER", "DROP", "TRUNCATE", "RENAME",
+        "USE", "SHOW", "DESCRIBE", "DESC", "BEGIN", "COMMIT", "ROLLBACK", "SAVEPOINT",
+        "GRANT", "REVOKE", "EXPLAIN", "WITH", "DECLARE", "SET", "CALL", "EXEC", "EXECUTE",
+        "LOCK", "UNLOCK", "ANALYZE", "MERGE", "REPLACE", "UPSERT", "CONNECT", "DISCONNECT"
     ]
 
     if not any(sql_query.strip().upper().startswith(keyword) for keyword in valid_keywords):
         raise ValueError(f"Invalid SQL query: {sql_query}")
 
-def process_query(sql_query,db):
-    """Execute a SELECT SQL query and return the results."""
+def process_query_from_file(sql_file_path, db):
     try:
-        print(f"query: {sql_query}")
-        print(f"text_query: {text(sql_query)}")
+        with open(sql_file_path, "r") as file:
+            sql_query = file.read()
+
+        print(f"query from file: {sql_query}")
+        validate_sql_query(sql_query)
+
         with db._engine.connect() as connection:
             result = connection.execute(text(sql_query))
             return result.fetchall()  # Fetch all results
     except Exception as e:
-        print(f"Error process_query: {e}")
+        print(f"Error in process_query_from_file: {e}")
 
-      
-def get_answer_with_agents(query, related_chunks,db):
 
+def get_answer_with_agents(query, related_chunks, db):
     print("AgentManager: Route to the required agents")
-    #print(related_chunks)
-    agent=route_agent(query, related_chunks)
-    #print(agent.content)
-    # Step 1: Agent 1 generates the answer
-    if ("agent1" in agent.content):
+
+    agent = route_agent(query, related_chunks)
+
+    if "agent1" in agent.content:
         answer = generate_answer_with_agent1(query, related_chunks)
-    elif("agent3" in agent.content):
-        answer= fetch_information_from_web_agent3(query)
-    elif("agent4" in agent.content):
-        sql_query=fetch_data_from_database_agent4(query, related_chunks,db)
-        #print(sql_query)
-        if sql_query is None:
-            print("SQL Query is None")
+    elif "agent3" in agent.content:
+        answer = fetch_information_from_web_agent3(query)
+    elif "agent4" in agent.content:
+        sql_file_path = fetch_data_from_database_agent4(query, related_chunks, db)
+        if sql_file_path is None:
+            print("SQL Query file is None")
             return
-        validate_sql_query(sql_query)
-        sql_response=process_query(sql_query,db)
+
+        sql_response = process_query_from_file(sql_file_path, db)
         for row in sql_response:
             print(row)
         return
 
-    # Step 2: Agent 2 validates and reformats the answer
     formatted_answer = validate_and_format_with_agent2(answer, related_chunks)
     return formatted_answer

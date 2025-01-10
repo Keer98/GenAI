@@ -1,0 +1,1 @@
+SELECT `customer_code`, `custmer_name`, `customer_type` FROM customers LIMIT 5;

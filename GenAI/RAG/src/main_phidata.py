@@ -8,9 +8,9 @@ from chromadb_manager import get_or_create_collection, add_to_collection, delete
 from config import DOCUMENTS_DIR
 import hashlib
 from generate_answer import generate_answer_with_llm
-#from agents import generate_answer_with_agent1, validate_and_format_with_agent2, fetch_information_from_web_agent3, get_answer_with_agents
-from database_connection import create_table_chunks
-from sql_agents import get_answer_with_agents
+from agents import generate_answer_with_agent1, validate_and_format_with_agent2
+from phidata_agents import initialize_agent
+
 
 def compute_hash(file_path):
     with open(file_path, 'rb') as f:
@@ -20,13 +20,7 @@ def compute_hash(file_path):
 def main():
     collection = get_or_create_collection()
     known_files = get_existing_files(DOCUMENTS_DIR)
-
     file_hashes = {}
-
-    # processing database
-    table_chunks,db =create_table_chunks()
-    table_embeddings = generate_embeddings(table_chunks)
-    add_to_collection(collection,table_chunks, table_embeddings, file_name="sales")
     # Initial processing for existing files
     for file_name in known_files:
         file_path = os.path.join(DOCUMENTS_DIR, file_name)
@@ -115,12 +109,16 @@ def main():
             continue
         else: 
             related_chunks = query_collection(query)
-            #print(related_chunks)
             #answer=generate_answer_with_llm(query, related_chunks)
             #print(f"\nResponse:{answer['answer'].content}")  
-            answer=get_answer_with_agents(query,related_chunks,db)
-            if answer is not None:
-                print(f"\nResponse:{answer.content}") 
+
+            # Step 1: Agent 1 generates the answer
+            #answer = generate_answer_with_agent1(query, related_chunks)
+
+            # Step 2: Agent 2 validates and reformats the answer
+            #formatted_answer = validate_and_format_with_agent2(answer)
+            formatted_answer=initialize_agent(query,related_chunks)
+            print(f"\nResponse:{formatted_answer.content}") 
         
         # Update known files
         known_files = get_existing_files(DOCUMENTS_DIR)

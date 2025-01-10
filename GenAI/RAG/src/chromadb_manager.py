@@ -15,17 +15,19 @@ def get_or_create_collection():
 
 def add_to_collection(collection, chunks, embeddings, file_name):
     for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+        # Create a dictionary for metadata
         metadata = {
             "chunk_index": i,
-            "page_number": chunk["page_number"],
-            "chunk_hash": chunk["chunk_hash"],
-            "text": chunk["chunk"],
-            "file_name": file_name
+            "page_number": chunk.get("page_number", 0),  # Default to 0 if not present
+            "chunk_hash": chunk.get("chunk_hash", ""),   # Default to empty string if not present
+            "file_name": file_name,
+            "text": chunk.get("chunk", "")  # Include the chunk text if needed
         }
+        
         collection.add(
             ids=[f"{file_name}_chunk_{i}"],
             embeddings=[embedding],
-            metadatas=[metadata]
+            metadatas=[metadata]  # Ensure this is a dictionary
         )
 
 def delete_from_collection(collection, file_name):
